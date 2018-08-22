@@ -14,8 +14,12 @@
     "exec": "docker-compose exec insightapi bash",
     "logs": "docker-compose logs -f insightapi",
     "clean": "docker-compose stop && docker-compose rm -f && rm -rf ./docker/data",
+    "migrate": "truffle migrate",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "truffle": "^4.1.14"
   }
 }
