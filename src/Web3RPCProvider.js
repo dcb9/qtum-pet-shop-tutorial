@@ -1,3 +1,5 @@
+import Config from "./config"
+
 export default function QryptoETHRPCProvider() { }
 
 QryptoETHRPCProvider.prototype.contractCall = async function (params) {
@@ -26,16 +28,16 @@ QryptoETHRPCProvider.prototype.sendToContract = async function(tx) {
 }
 
 QryptoETHRPCProvider.prototype.sendAsync = async function(payload, finished) {
-  if (!window.qryptoProvider) {
-      end(new Error("window.qryptoProvider is undefined"))
-      return
-  }
-
   switch (payload.method) {
     case "net_version":
-      end(null, "regtest")
+      end(null, Config.net_version)
       break;
     case "eth_call":
+      if (!window.qryptoProvider) {
+          end(new Error("window.qryptoProvider is undefined"))
+          return
+      }
+
       const val = await this.contractCall(payload.params)
       end(null, val)
       break;

@@ -3,8 +3,7 @@ import Pet from './Pet.js';
 import './Pets.css';
 import Web3Provider from '../Web3RPCProvider';
 import TruffleContract from 'truffle-contract'
-
-const AdoptionArtifact  = require('../contracts/Adoption.json')
+import Config from '../config'
 
 const pets = require('../pets.json')
 
@@ -29,7 +28,7 @@ class Pets extends Component {
   }
 
   initContract() {
-    this.contracts.Adoption = TruffleContract(AdoptionArtifact);
+    this.contracts.Adoption = TruffleContract(Config.AdoptionArtifact);
 
     // Set the provider for our contract
     this.contracts.Adoption.setProvider(this.web3Provider);
@@ -44,8 +43,8 @@ class Pets extends Component {
 
     while (this.isFetchingAdopters) {
       console.log("fetchAdopters")
-      await this.fetchAdopters()
-      await sleep(2000)
+        this.fetchAdopters()
+        await sleep(5000)
     }
   }
 
