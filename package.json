@@ -13,9 +13,11 @@
     "start": "react-scripts start",
     "start-services": "./docker/start-services.sh",
     "exec": "docker-compose exec insightapi bash",
+    "mineQuickly": "docker-compose exec insightapi watch -n 2 qcli generate 1",
     "logs": "docker-compose logs -f insightapi",
     "clean": "docker-compose stop && docker-compose rm -f && rm -rf ./docker/data",
     "migrate": "truffle migrate",
+    "migrate:force": "truffle migrate --reset",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
