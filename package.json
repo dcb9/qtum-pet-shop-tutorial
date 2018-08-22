@@ -10,6 +10,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-services": "./docker/start-services.sh",
+    "exec": "docker-compose exec insightapi bash",
+    "logs": "docker-compose logs -f insightapi",
+    "clean": "docker-compose stop && docker-compose rm -f && rm -rf ./docker/data",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

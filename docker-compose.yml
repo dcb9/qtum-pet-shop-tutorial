@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  insightapi:
+    build: ./docker
+    links:
+    - mongo
+    volumes:
+    - ./docker/data/:/data
+    ports:
+    - "3001:3001"
+    - "18332:18332"
+    - "23889:23889"
+
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ""
+      MONGO_INITDB_ROOT_PASSWORD: ""
+    volumes:
+    - ./docker/data/mongodb:/data/db
